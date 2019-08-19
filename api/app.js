@@ -7,6 +7,8 @@ var app = express();
 
 // cargar rutas
 
+var user_routes = require('./routes/user')
+
 // middlewares
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -16,19 +18,7 @@ app.use(bodyParser.json());
 
 // rutas
 
-app.get('/', (req, res) => {
-    res.status(200).send({
-        message:'hola mundo'
-    });
-
-});
-
-app.get('/pruebas', (req, res) => {
-    res.status(200).send({
-        message:'Accion de pruebas en el servidor de nodejs'
-    });
-
-});
+app.use('/api', user_routes);
 
 //exportar
 module.exports = app;
